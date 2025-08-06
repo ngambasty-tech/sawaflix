@@ -150,7 +150,7 @@ export default function LoginPage() {
           </Link>
         </div>
             <div className="mt-6 text-xs text-gray-500 text-center">
-              This page is protected by Google reCAPTCHA to ensure you're not a bot.{' '}
+              This page is protected by Google reCAPTCHA to ensure you are not a bot.{' '}
               <button className="text-blue-400 hover:text-blue-300 transition-colors">
                 Learn more
               </button>
