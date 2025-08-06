@@ -51,7 +51,7 @@ export default function SignUpForm() {
             <input
               type="text"
               placeholder="Full Name"
-              className="w-full p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full p-4 border border-gray-600 rounded-md bg-grey-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -61,7 +61,7 @@ export default function SignUpForm() {
             <input
               type="email"
               placeholder="Email or phone number"
-              className="w-full p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full p-4  border border-gray-600 rounded-md bg-grey-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -71,7 +71,7 @@ export default function SignUpForm() {
             <input
               type="password"
               placeholder="Password"
-              className="w-full p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full p-4 border border-gray-600 rounded-md bg-grey-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -81,7 +81,7 @@ export default function SignUpForm() {
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full p-4 border border-gray-600 rounded-md bg-grey-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
