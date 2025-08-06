@@ -45,7 +45,7 @@ export default function SignUpForm() {
       {/* End Background Image Holder */}
 
       <div className="relative bg-black bg-opacity-75 p-10 rounded-lg shadow-xl max-w-md w-full z-10">
-        <h1 className="text-white text-4xl font-bold mb-8 text-center">Sign Up</h1>
+        <h1 className="text-white text-4xl font-bold mb-8 text-center ">Sign Up</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <input
@@ -108,7 +108,7 @@ export default function SignUpForm() {
         </form>
         <div className="text-gray-400 text-center mt-6">
           Already have an account?{' '}
-          <Link href="/signin" className="text-red-500 hover:underline">
+          <Link href="/login" className="text-red-500 hover:underline">
             Sign In
           </Link>
         </div>
