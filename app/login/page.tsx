@@ -1,5 +1,5 @@
 'use client';
-
+import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -143,15 +143,12 @@ export default function LoginPage() {
                 Login with Facebook
               </button>
             </div>
-            <div className="mt-6 text-center text-gray-400">
-              <span>New to Stream Verse? </span>
-              <button
-                onClick={handleSignUp}
-                className="text-white hover:text-blue-400 transition-colors font-semibold"
-              >
-                Sign Up Now
-              </button>
-            </div>
+        <div className="text-gray-400 text-center mt-6">
+          Are you new to streamverse{' '}
+          <Link href="/sign-up" className="text-red-500 hover:underline">
+            Sign up
+          </Link>
+        </div>
             <div className="mt-6 text-xs text-gray-500 text-center">
               This page is protected by Google reCAPTCHA to ensure you're not a bot.{' '}
               <button className="text-blue-400 hover:text-blue-300 transition-colors">
