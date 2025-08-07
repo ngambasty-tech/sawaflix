@@ -1,6 +1,6 @@
-import Navbar from "../../components/common/Navbar";
+import Navbar from "../../components/common/NavbarTop";
 
-export default function LoginPage() {
+export default function MoviePage() {
     return (
         <div>
         <Navbar/>    
