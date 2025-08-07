@@ -1,18 +1,8 @@
 
-
-//body here
-'use client';
-import NavbarBottom from "../components/common/NavbarBottom";
-export default function Home() {
-  return(
-    <>
-    <NavbarBottom/>
-    </>
-  )
-}
-
 'use client';
 import NavbarTop from "../components/common/NavbarTop";
+import NavbarBottom from "../components/common/NavbarBottom";
+
 import Image from 'next/image';
 
 export default function Home({ 
@@ -122,6 +112,8 @@ export default function Home({
       {/* Subtle Glow Effect */}
       <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-3xl blur-xl opacity-30 -z-10"></div>
     </div>
+
+    <NavbarBottom/>
 
     </>
 
