@@ -1,3 +1,16 @@
+
+
+//body here
+'use client';
+import NavbarBottom from "../components/common/NavbarBottom";
+export default function Home() {
+  return(
+    <>
+    <NavbarBottom/>
+    </>
+  )
+}
+
 'use client';
 import NavbarTop from "../components/common/NavbarTop";
 import Image from 'next/image';
