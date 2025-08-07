@@ -4,57 +4,48 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function SignUpPage() {
+export default function LoginPage() {
   const [formData, setFormData] = useState({
-    username:'',
     email: '',
     password: '',
-    confirmPassword: '' // Added for sign-up
+    rememberMe: false
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null); // Removed TypeScript type annotation
   const router = useRouter();
 
   const handleInputChange = (e) => { // Removed TypeScript type annotation
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
-  const handleSignUp = async (e) => { // Removed TypeScript type annotation
+  const handleSignIn = async (e) => { // Removed TypeScript type annotation
     e.preventDefault();
-    setError(null); // Clear previous errors
-
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
     setIsLoading(true);
-    // Simulate API call for sign-up
+    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      if (formData.email === 'test@example.com') { // Example: simulate existing user
-        setError("This email is already registered.");
-      } else {
-        console.log('Sign up attempt:', formData);
-        router.push('/login'); // Redirect to login after successful sign-up
-      }
-    }, 1500);
+      console.log('Sign in attempt:', formData);
+      router.push('/');
+    }, 1500); // Increased timeout for better spinner visibility
   };
 
   const handleGoogleSignIn = () => {
-    console.log('Sign up with Google clicked');
-    // Simulate Google sign-up
+    console.log('Google sign in clicked');
+    // Simulate Google sign-in
     router.push('/dashboard'); // Example redirect
   };
 
   const handleFacebookSignIn = () => {
-    console.log('Sign up with Facebook clicked');
-    // Simulate Facebook sign-up
+    console.log('Facebook sign in clicked');
+    // Simulate Facebook sign-in
     router.push('/dashboard'); // Example redirect
+  };
+
+  const handleSignUp = () => {
+    router.push('/sign-up');
   };
 
   return (
@@ -91,27 +82,16 @@ export default function SignUpPage() {
           {/* Actual Form Card Content */}
           <div className="relative z-10 bg-black/40 backdrop-blur-md rounded-3xl p-8 sm:p-10 md:p-12 w-full border border-gray-800">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white text-center mb-8 tracking-wide drop-shadow-[0_0_8px_rgba(255,0,0,0.7)]">
-              Sign Up
+              Sign In
             </h1>
-            <form onSubmit={handleSignUp} className="space-y-6 sm:space-y-8">
+            <form onSubmit={handleSignIn} className="space-y-6 sm:space-y-8">
               <div>
                 <input
                   type="text"
-                  name="usrname"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  placeholder="username"
-                  className="w-full px-5 py-3 sm:py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300 shadow-inner shadow-gray-950"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="Email address"
+                  placeholder="Email or phone number"
                   className="w-full px-5 py-3 sm:py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300 shadow-inner shadow-gray-950"
                   required
                 />
@@ -127,20 +107,24 @@ export default function SignUpPage() {
                   required
                 />
               </div>
-              <div>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  placeholder="Confirm Password"
-                  className="w-full px-5 py-3 sm:py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300 shadow-inner shadow-gray-950"
-                  required
-                />
+              <div className="flex items-center justify-between text-sm sm:text-base">
+                <label className="flex items-center text-gray-300 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    name="rememberMe"
+                    checked={formData.rememberMe}
+                    onChange={handleInputChange}
+                    className="w-5 h-5 mr-2 appearance-none border border-gray-600 rounded-md bg-gray-800 checked:bg-red-600 checked:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-200"
+                  />
+                  Remember me
+                </label>
+                <button
+                  type="button"
+                  className="text-blue-400 hover:text-blue-300 transition-colors duration-200 hover:underline"
+                >
+                  Need help?
+                </button>
               </div>
-              {error && (
-                <p className="text-red-500 text-sm text-center">{error}</p>
-              )}
               <button
                 type="submit"
                 disabled={isLoading}
@@ -152,7 +136,7 @@ export default function SignUpPage() {
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
                 ) : (
-                  'Sign Up'
+                  'Sign In'
                 )}
               </button>
             </form>
@@ -179,7 +163,7 @@ export default function SignUpPage() {
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                   </svg>
                 </div>
-                Sign Up with Google
+                Continue with Google
               </button>
               <button
                 onClick={handleFacebookSignIn}
@@ -188,14 +172,14 @@ export default function SignUpPage() {
                 <div className="w-6 h-6 mr-3 bg-blue-600 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-base">f</span>
                 </div>
-                Sign Up with Facebook
+                Login with Facebook
               </button>
             </div>
 
             <div className="text-gray-400 text-center mt-8 text-sm sm:text-base">
-              Already have an account?{' '}
-              <Link href="/login" className="text-red-500 hover:underline hover:text-red-400 transition-colors">
-                Sign In
+              Are you new to Streamverse?{' '}
+              <Link href="/sign-up" className="text-red-500 hover:underline hover:text-red-400 transition-colors">
+                Sign up
               </Link>
             </div>
 
@@ -233,8 +217,7 @@ export default function SignUpPage() {
           animation: rotate-gradient 8s linear infinite;
         }
 
-        /* Custom checkbox styling (removed as it's not needed for sign-up, but keeping for reference if needed elsewhere) */
-        /*
+        /* Custom checkbox styling */
         input[type="checkbox"] {
           -webkit-appearance: none;
           -moz-appearance: none;
@@ -254,7 +237,6 @@ export default function SignUpPage() {
           font-size: 0.8rem;
           color: white;
         }
-        */
       `}</style>
     </div>
   );
