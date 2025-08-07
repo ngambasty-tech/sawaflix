@@ -97,7 +97,7 @@ export default function SignUpPage() {
               <div>
                 <input
                   type="text"
-                  name="usrname"
+                  name="username"
                   value={formData.username}
                   onChange={handleInputChange}
                   placeholder="username"
