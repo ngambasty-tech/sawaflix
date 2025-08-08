@@ -22,6 +22,10 @@
       "@/*": ["./*"]
     }
   },
+<<<<<<< HEAD
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/login/page.tsx", "app/page.jsx"],
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/login/page.jsx", "app/page.jsx"],
+>>>>>>> 8460682afd8f8fe6b9d36038959c6ac9a31193f3
   "exclude": ["node_modules"]
 }
