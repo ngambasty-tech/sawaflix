@@ -19,7 +19,7 @@ export default function Home(
   subtitle = "The Ultimate Music And Movies",
   watchButtonText = "Watch now",
   listenButtonText = "Listen now"
-},
+,
  
   items = [
     {
@@ -42,7 +42,7 @@ export default function Home(
       hasPlayIcon: true,
       featured: false
     }
-  ]
+  ]}
 ) {
   const PlayIcon = () => (
     <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-200 cursor-pointer">
