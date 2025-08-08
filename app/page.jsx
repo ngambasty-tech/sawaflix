@@ -6,6 +6,8 @@ import MoviesSection from "../components/common/moviesForYou";
 import MusicSection from "../components/common/MusicsForYou";
 
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 export default function Home(
   { 
@@ -121,14 +123,18 @@ export default function Home(
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-sm">
                 {/* Watch Now Button */}
+                <Link href='/login'>
                 <button className="flex-1 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
                   {watchButtonText}
                 </button>
+                </Link>
                 
                 {/* Listen Now Button */}
+                <Link href='/login'>
                 <button className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
                   {listenButtonText}
                 </button>
+                </Link>
               </div>
             </div>
           </div>
