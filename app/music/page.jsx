@@ -1,9 +1,9 @@
-import Navbar from "../../components/common/Navbar";
+import NavbarTop from "../../components/common/NavbarTop";
 
 export default function MusicPage() {
     return (
         <div>
-        <Navbar/>    
+        <NavbarTop/>    
         <h1>Music Page</h1>
         </div>
     );
