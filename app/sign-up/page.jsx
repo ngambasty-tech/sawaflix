@@ -141,6 +141,8 @@ export default function SignUpPage() {
               {error && (
                 <p className="text-red-500 text-sm text-center">{error}</p>
               )}
+              <Link href="/landing">
+
               <button
                 type="submit"
                 disabled={isLoading}
@@ -155,6 +157,7 @@ export default function SignUpPage() {
                   'Sign Up'
                 )}
               </button>
+              </Link>
             </form>
 
             <div className="relative my-8">
