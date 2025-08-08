@@ -7,6 +7,7 @@ import StreamVerseHeroBanner from "../components/common/Hero"
 import TrendingSection from "../components/common/Trending"
 import Image from 'next/image';
 
+
 export default function Home() {
   const backgroundImage = "/bg-image.jpg";
   const overlayOpacity = 0.4;
