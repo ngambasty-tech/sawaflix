@@ -1,4 +1,5 @@
 // app/landing/page.jsx
+import MovieCarousel from "../../components/common/landingpagepart2";
 import LandingTop from "../../components/common/landingTop";
 
 export const metadata = {
@@ -7,5 +8,10 @@ export const metadata = {
 };
 
 export default function Landing() {
-  return <LandingTop/>;
+  return (
+  <>
+  <LandingTop/>
+  <MovieCarousel/>
+  </>
+  )
 }
