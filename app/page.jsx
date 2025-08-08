@@ -1,26 +1,20 @@
-
 'use client';
 import NavbarTop from "../components/common/NavbarTop";
 import NavbarBottom from "../components/common/NavbarBottom";
 import MoviesSection from "../components/common/moviesForYou";
 import MusicSection from "../components/common/MusicsForYou";
-
 import Image from 'next/image';
 import Link from 'next/link';
 
-
-export default function Home(
-  { 
+export default function Home({
   imageSrc = "/bg-image.jpg",
-  backgroundImage = "/bg-image.jpg", 
+  backgroundImage = "/bg-image.jpg",
   overlayOpacity = 0.4,
   imageAlt = "StreamVerse Hero Image",
   title = "StreamVerse",
   subtitle = "The Ultimate Music And Movies",
   watchButtonText = "Watch now",
-  listenButtonText = "Listen now"
-,
- 
+  listenButtonText = "Listen now",
   items = [
     {
       id: 1,
@@ -42,8 +36,8 @@ export default function Home(
       hasPlayIcon: true,
       featured: false
     }
-  ]}
-) {
+  ]
+}) {
   const PlayIcon = () => (
     <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-200 cursor-pointer">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="ml-0.5">
@@ -68,26 +62,26 @@ export default function Home(
   return (
     <>
     <div className="relative min-h-screen w-full overflow-x-hidden">
-       <div className="fixed inset-0 -z-20">
-        <Image
+        <div className="fixed inset-0 -z-20">
+         <Image
           src={backgroundImage}
           alt="Background"
           fill
           className="object-cover"
           priority
           quality={85}
-        />
-      </div>
-      
-      {/* Optional Dark Overlay for better readability */}
-      <div 
-        className="fixed inset-0 -z-10 bg-black"
-        style={{ opacity: overlayOpacity }}
-      ></div>
-      
-      {/* Gradient Overlay for Entertainment Feel */}
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
-      
+         />
+       </div>
+       
+       {/* Optional Dark Overlay for better readability */}
+       <div 
+         className="fixed inset-0 -z-10 bg-black"
+         style={{ opacity: overlayOpacity }}
+       ></div>
+       
+       {/* Gradient Overlay for Entertainment Feel */}
+       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+       
 
     <NavbarTop />
 
@@ -145,96 +139,94 @@ export default function Home(
       <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-3xl blur-xl opacity-30 -z-10"></div>
     </div>
 
-     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      {/* Section Header */}
-      <div className="flex items-center mb-6">
-        <div className="w-1 h-6 bg-gradient-to-b from-red-500 to-pink-500 rounded-full mr-3"></div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-white">
-          Trending Now
-        </h2>
-      </div>
+       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+       {/* Section Header */}
+       <div className="flex items-center mb-6">
+         <div className="w-1 h-6 bg-gradient-to-b from-red-500 to-pink-500 rounded-full mr-3"></div>
+         <h2 className="text-2xl sm:text-3xl font-bold text-white">
+           Trending Now
+         </h2>
+       </div>
 
-      {/* Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-        {/* Featured Large Card */}
-        {featuredItem && (
-          <div className="lg:col-span-2 lg:row-span-2">
-            <div className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
-              <div className="relative aspect-[4/3] lg:aspect-[16/10]">
-                <Image
-                  src={featuredItem.imageSrc}
-                  alt={featuredItem.imageAlt}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                
-                {/* Content Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 tracking-wide">
-                    {featuredItem.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm sm:text-base font-medium">
-                    {featuredItem.subtitle}
-                  </p>
-                </div>
+       {/* Content Grid */}
+       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+         {/* Featured Large Card */}
+         {featuredItem && (
+           <div className="lg:col-span-2 lg:row-span-2">
+             <div className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
+               <div className="relative aspect-[4/3] lg:aspect-[16/10]">
+                 <Image
+                   src={featuredItem.imageSrc}
+                   alt={featuredItem.imageAlt}
+                   fill
+                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                 />
+                 
+                 {/* Dark Overlay */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                 
+                 {/* Content Overlay */}
+                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 tracking-wide">
+                     {featuredItem.title}
+                   </h3>
+                   <p className="text-gray-300 text-sm sm:text-base font-medium">
+                     {featuredItem.subtitle}
+                   </p>
+                 </div>
 
-                {/* Play Icon */}
-                {featuredItem.hasPlayIcon && featuredItem.type === 'movie' && <PlayIcon />}
-                {featuredItem.type === 'music' && <MusicIcon />}
-              </div>
-              
-            </div>
-          </div>
-        )}
+                 {/* Play Icon */}
+                 {featuredItem.hasPlayIcon && featuredItem.type === 'movie' && <PlayIcon />}
+                 {featuredItem.type === 'music' && <MusicIcon />}
+               </div>
+               
+             </div>
+           </div>
+         )}
 
-        {/* Regular Cards Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-          {regularItems.map((item) => (
-            <div key={item.id} className="group cursor-pointer">
-              <div className="relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative aspect-[3/4] sm:aspect-[4/5]">
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.imageAlt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                  
-                  {/* Content Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                    <h4 className="text-white font-bold text-sm sm:text-base mb-1 leading-tight">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-300 text-xs sm:text-sm">
-                      {item.subtitle}
-                    </p>
-                  </div>
+         {/* Regular Cards Grid */}
+         <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+           {regularItems.map((item) => (
+             <div key={item.id} className="group cursor-pointer">
+               <div className="relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                 <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+                   <Image
+                     src={item.imageSrc}
+                     alt={item.imageAlt}
+                     fill
+                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                   />
+                   
+                   {/* Dark Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                   
+                   {/* Content Overlay */}
+                   <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                     <h4 className="text-white font-bold text-sm sm:text-base mb-1 leading-tight">
+                       {item.title}
+                     </h4>
+                     <p className="text-gray-300 text-xs sm:text-sm">
+                       {item.subtitle}
+                     </p>
+                   </div>
 
-                  {/* Icons */}
-                  {item.hasPlayIcon && item.type === 'movie' && <PlayIcon />}
-                  {item.type === 'music' && <MusicIcon />}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-    <MoviesSection/>
-    <MusicSection/>
+                   {/* Icons */}
+                   {item.hasPlayIcon && item.type === 'movie' && <PlayIcon />}
+                   {item.type === 'music' && <MusicIcon />}
+                 </div>
+               </div>
+             </div>
+           ))}
+         </div>
+       </div>
+     </div>
+     <MoviesSection/>
+     <MusicSection/>
 
-    <NavbarBottom/>
-    </div>
+     <NavbarBottom/>
+     </div>
 
-    </>
+     </>
 
-  );
+   );
 }
-
-//body here
