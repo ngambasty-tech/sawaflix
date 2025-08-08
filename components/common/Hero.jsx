@@ -10,7 +10,7 @@ export default function StreamVerseHeroBanner({
   listenButtonText = "Listen now"
 }) {
   return (
-    <div className="relative w-full max-w-2xl mx-auto mt-6 mb-8 px-4">
+    <div className="relative w-full max-w-2xl mx-auto mt-22 mb-8 px-4">
       {/* Main Container with Gradient Border */}
       <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-1">
         {/* Content Container */}
