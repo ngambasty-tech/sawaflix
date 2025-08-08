@@ -34,10 +34,10 @@ const DownNav = () => {
   ];
 
 return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
       {/* Gradient Background Container */}
-      <nav className="bg-gradient-to-r from-red-600 via-red-500 to-pink-500 rounded-full px-6 py-3 shadow-2xl border border-red-400/30 backdrop-blur-sm">
-        <div className="flex items-center space-x-6 sm:space-x-8">
+      <nav className="bg-gradient-to-r from-red-600 via-red-500 to-pink-500 rounded-full px-4 py-1 sm:px-6 sm:py-3 shadow-2xl border border-red-400/30 backdrop-blur-sm">
+        <div className="flex items-center space-x-4 sm:space-x-8">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.name;
@@ -54,7 +54,7 @@ return (
               >
                 {item.isProfile ? (
                   <Link href="/"> 
-                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden mb-1 border-2 transition-all duration-200 ${
+                  <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden mb-0.5 sm:mb-1 border-2 transition-all duration-200 ${
                     isActive 
                       ? 'border-yellow-300 shadow-lg ring-2 ring-yellow-300/50' 
                       : 'border-white/50 hover:border-white'
@@ -70,8 +70,8 @@ return (
                   </Link> 
                 ) : (
                   <Icon 
-                    size={24} 
-                    className={`mb-1 transition-all duration-200 sm:w-7 sm:h-7 ${
+                    size={20} 
+                    className={`mb-0.5 sm:mb-1 transition-all duration-200 sm:w-7 sm:h-7 ${
                       isActive 
                         ? 'stroke-2 drop-shadow-lg' 
                         : 'stroke-[1.5] group-hover:stroke-2'
