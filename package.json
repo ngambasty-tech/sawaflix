@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "lucide-react": "^0.536.0",
+=======
+    "lucide-react": "^0.537.0",
+>>>>>>> 8460682afd8f8fe6b9d36038959c6ac9a31193f3
     "next": "15.4.5",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
