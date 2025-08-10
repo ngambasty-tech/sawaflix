@@ -34,10 +34,10 @@ const DownNav = () => {
   ];
 
 return (
-     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="fixed bottom-4 left-0 right-0 z-50 px-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 sm:px-0">
       {/* Gradient Background Container */}
-      <nav className="bg-gradient-to-r from-red-600 via-red-500 to-pink-500 rounded-full px-4 py-1 sm:px-6 sm:py-3 shadow-2xl border border-red-400/30 backdrop-blur-sm">
-        <div className="flex items-center space-x-4 sm:space-x-8">
+      <nav className="bg-gradient-to-r from-red-600 via-red-500 to-red-500 rounded-full px-4 py-1 sm:px-6 sm:py-3 shadow-2xl border border-red-400/30 backdrop-blur-sm w-full sm:w-auto">
+        <div className="flex items-center justify-around sm:justify-center sm:space-x-8">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.name;
