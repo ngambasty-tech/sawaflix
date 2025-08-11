@@ -125,6 +125,7 @@ export default function LoginPage() {
                   Need help?
                 </button>
               </div>
+              <Link href="/landing">
               <button
                 type="submit"
                 disabled={isLoading}
@@ -139,6 +140,7 @@ export default function LoginPage() {
                   'Sign In'
                 )}
               </button>
+              </Link>
             </form>
 
             <div className="relative my-8">

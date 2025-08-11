@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function StreamVerseHeroBanner({ 
   imageSrc = "/bg-image.jpg", 
   imageAlt = "StreamVerse Hero Image",
-  title = "StreamVerse",
+  title = "SawaFlix",
   subtitle = "The Ultimate Music And Movies",
   watchButtonText = "Watch now",
   listenButtonText = "Listen now"
