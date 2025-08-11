@@ -11,7 +11,7 @@ export default function NavbarTop() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-600 via-red-500 to-red-500 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between shadow-xl backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-600 via-red-600 to-red-600 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between shadow-xl backdrop-blur-sm">
       {/* Logo Section */}
       <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
         <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-200">
