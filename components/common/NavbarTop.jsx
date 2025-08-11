@@ -18,8 +18,8 @@ export default function NavbarTop() {
           <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-white rounded-sm transform rotate-45 shadow-sm"></div>
         </div>
         <span className="text-white text-lg sm:text-xl lg:text-2xl font-bold tracking-wide drop-shadow-sm">
-          <Link href="/" className="hidden sm:inline">StreamVerse</Link>
-          <Link href="/" className="sm:hidden">SV</Link>
+          <Link href="/" className="hidden sm:inline">SawaFlx</Link>
+          <Link href="/" className="sm:hidden">SF</Link>
         </span>
       </div>
 
