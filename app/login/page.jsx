@@ -52,7 +52,7 @@ export default function LoginPage() {
     <div className="min-h-screen w-full relative overflow-hidden font-inter">
       {/* Background Image with Dark Overlay */}
       <Image
-        src="/bg-image.jpg" // Assuming bg-image.jpg is in your public folder
+        src="/background.png" // Assuming bg-image.jpg is in your public folder
         alt="Background"
         layout="fill"
         objectFit="cover"
@@ -63,7 +63,7 @@ export default function LoginPage() {
           e.currentTarget.srcset = "";
         }}
       />
-      <div className="absolute inset-0 bg-black opacity-20 z-10"></div> {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black opacity-70 z-10"></div> {/* Dark overlay */}
 
       {/* Main Content */}
       <div className="relative z-20 flex items-center justify-center min-h-screen px-4 py-8 sm:px-6 lg:px-8">
@@ -125,11 +125,11 @@ export default function LoginPage() {
                   Need help?
                 </button>
               </div>
-              <Link href="/landing">
+              
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex items-center justify-center bg-red-700 hover:bg-red-600 disabled:bg-red-900 text-white font-bold py-3 sm:py-4 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] disabled:transform-none disabled:cursor-not-allowed shadow-lg hover:shadow-red-500/70 active:scale-95"
+                className="w-full flex items-center justify-center bg-red-700 hover:bg-red-600 disabled:bg-red-900 text-white font-bold py-3 sm:py-4 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-red-500/70 active:scale-95"
               >
                 {isLoading ? (
                   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -140,7 +140,6 @@ export default function LoginPage() {
                   'Sign In'
                 )}
               </button>
-              </Link>
             </form>
 
             <div className="relative my-8">
@@ -179,7 +178,7 @@ export default function LoginPage() {
             </div>
 
             <div className="text-gray-400 text-center mt-8 text-sm sm:text-base">
-              Are you new to Streamverse?{' '}
+              Are you new to SawaFlx?{' '}
               <Link href="/sign-up" className="text-red-500 hover:underline hover:text-red-400 transition-colors">
                 Sign up
               </Link>
