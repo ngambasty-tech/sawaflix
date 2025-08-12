@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import login from './app/login/page.jsx';
+// import login from './app/login/page.jsx';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ export default function LoginPage() {
     setTimeout(() => {
       setIsLoading(false);
       console.log('Sign in attempt:', formData);
-      router.push('/');
+      router.push('/home');
     }, 1500); // Increased timeout for better spinner visibility
   };
 
@@ -64,7 +64,7 @@ export default function LoginPage() {
           e.currentTarget.srcset = "";
         }}
       />
-      <div className="absolute inset-0 bg-black opacity-70 z-10"></div> {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black opacity-20 z-10"></div> {/* Dark overlay */}
 
       {/* Main Content */}
       <div className="relative z-20 flex items-center justify-center min-h-screen px-4 py-8 sm:px-6 lg:px-8">
