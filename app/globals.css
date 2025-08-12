@@ -39,6 +39,7 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+<<<<<<< HEAD
 /* Carousel rotation animations */
 @keyframes slideInFromRight {
   0% {
@@ -187,3 +188,6 @@ body {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+=======
+
+>>>>>>> ad4f25099305c88801d5ab0760b400935d07f2b3

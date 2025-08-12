@@ -53,7 +53,7 @@ return (
                 }`}
               >
                 {item.isProfile ? (
-                  <Link href="/"> 
+                  <Link href="/login"> 
                   <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden mb-0.5 sm:mb-1 border-2 transition-all duration-200 ${
                     isActive 
                       ? 'border-yellow-300 shadow-lg ring-2 ring-yellow-300/50' 
@@ -79,7 +79,7 @@ return (
                     fill={item.name === 'Movies' && isActive ? 'currentColor' : 'none'}
                   />
                 )}
-                <Link href="/">
+                <Link href="/login">
                 <span className={`text-xs sm:text-sm font-medium transition-all duration-200 ${
                   isActive 
                     ? 'text-white drop-shadow-sm' 
