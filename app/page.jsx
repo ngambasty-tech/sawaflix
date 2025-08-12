@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const LandingPage = () => {
   return (
@@ -154,7 +155,7 @@ const LandingPage = () => {
           </div>
 
           {/* Bottom Overlay with Login Section */}
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-90 backdrop-blur-sm px-6 py-8">
+          <div className="absolute bottom-0 left-0 right-0 bg-black/70 bg-opacity-40 backdrop-blur-sm px-6 py-8">
             <div className="text-center mb-6">
               <div className="flex items-center justify-center mb-4">
                 <div className="w-8 h-8 bg-yellow-400 rounded mr-3 flex items-center justify-center">
@@ -165,12 +166,17 @@ const LandingPage = () => {
               <p className="text-gray-300 text-sm font-medium">Entertainment has never been this easy</p>
             </div>
             <div className="space-y-4">
+              <Link href='/login'>
               <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg">
                 Login
               </button>
-              <button className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg">
+              </Link>
+              <Link href='/sign-up'>
+              <button className="w-full bg-red-500 mt-5 hover:bg-red-600 text-white font-semibold py-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg">
                 Create an account
               </button>
+              </Link>
+
             </div>
           </div>
         </div>
@@ -198,12 +204,16 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="space-y-4">
+              <Link href='/login'>
               <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-8 rounded-xl transition-all duration-300 text-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
                 Login
               </button>
-              <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-xl transition-all duration-300 text-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+              </Link>
+              <Link href='/sign-up'>
+              <button className="w-full bg-red-500 mt-4 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-xl transition-all duration-300 text-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
                 Sign Up
               </button>
+              </Link>
             </div>
             <div className="mt-12 text-center">
               <div className="bg-white bg-opacity-90 border border-white rounded-xl p-6">
