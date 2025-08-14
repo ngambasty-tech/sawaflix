@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { handleSignOut } from '@/app/(auth)/actions'; // Assuming actions.js is in app/(auth)
 
 export default function NavbarTop() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -18,8 +19,8 @@ export default function NavbarTop() {
           <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-white rounded-sm transform rotate-45 shadow-sm"></div>
         </div>
         <span className="text-white text-lg sm:text-xl lg:text-2xl font-bold tracking-wide drop-shadow-sm">
-          <Link href="/" className="hidden sm:inline">SawaFlx</Link>
-          <Link href="/" className="sm:hidden">SF</Link>
+          <Link href="/home" className="hidden sm:inline">SawaFlx</Link> {/* Changed to /home */}
+          <Link href="/home" className="sm:hidden">SF</Link> {/* Changed to /home */}
         </span>
       </div>
 
@@ -58,7 +59,7 @@ export default function NavbarTop() {
 
         {/* Search Icon - Shows when isSearchOpen is false */}
         {!isSearchOpen && (
-          <div className="flex justify-end">
+          <div className="flex justify-end space-x-2"> {/* Added space-x-2 for spacing between search and logout */}
             <button 
               onClick={toggleSearch}
               className="bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-2.5 text-white hover:bg-white/30 transition-all duration-200 shadow-lg hover:scale-110 transform"
@@ -78,6 +79,30 @@ export default function NavbarTop() {
                 <path d="m21 21-4.35-4.35" />
               </svg>
             </button>
+
+            {/* Logout Button */}
+            <form action={handleSignOut}>
+              <button
+                type="submit"
+                className="bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-2.5 text-white hover:bg-white/30 transition-all duration-200 shadow-lg hover:scale-110 transform"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="sm:w-5 sm:h-5"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </button>
+            </form>
           </div>
         )}
       </div>
