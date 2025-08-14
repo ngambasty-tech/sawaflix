@@ -113,7 +113,7 @@ function MovieCarousel() {
       </div>
 
       {/* Movie Posters Carousel */}
-      <div className="relative w-full max-w-xs lg:max-w-lg xl:max-w-2xl mx-auto">
+      <div className="relative w-full max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
         <div 
           className="relative h-64 sm:h-80 lg:h-96 xl:h-[28rem]"
           style={{ perspective: '800px' }}
@@ -124,7 +124,7 @@ function MovieCarousel() {
             return (
               <div
                 key={slideData.id + '-' + slideData.relativePosition}
-                className="absolute flex flex-col items-center justify-center transition-all duration-700 ease-in-out transform-gpu w-[35%] sm:w-[30%] lg:w-[25%]" // Adjusted width here
+                className="absolute flex flex-col items-center justify-center transition-all duration-700 ease-in-out transform-gpu w-[40%] sm:w-[35%] lg:w-[30%]" // Adjusted width here
                 style={{
                   transform: `${transform} scale(${scale}) translateX(-50%)`,
                   opacity: opacity,
