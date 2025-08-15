@@ -11,6 +11,7 @@ export default function UpdatePasswordPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  
   const router = useRouter();
 
   const handlePasswordUpdate = async (e) => {
