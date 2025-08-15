@@ -2,8 +2,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Heart, RotateCcw, Volume2, Download } from 'lucide-react';
-import NavbarTop from '@/components/common/NavbarTop';
-import DownNav from '@/components/common/NavbarBottom';
 
 export default function MusicPage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -115,7 +113,7 @@ export default function MusicPage() {
  
   return (
     <>
-    <NavbarTop/>
+    
     <div className="bg-black text-white min-h-screen">
       {/* Audio Element */}
       <audio
@@ -553,7 +551,6 @@ export default function MusicPage() {
         }
       `}</style>
     </div>
-    <DownNav />
     </>
   );
 }
