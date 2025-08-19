@@ -162,7 +162,7 @@ export default function LoginPage() {
             </div>
 
             <div className="text-gray-400 text-center mt-8 text-sm sm:text-base">
-              Are you new to SawaFlx?{' '}
+              Are you new to SawaFlix?{' '}
               <Link href="/sign-up" className="text-red-500 hover:underline hover:text-red-400 transition-colors">
                 Sign up
               </Link>
