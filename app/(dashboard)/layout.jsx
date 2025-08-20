@@ -1,21 +1,16 @@
-// import { Inter } from 'next/font/google';
-// import './globals.css';
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
+// import DashboardWrapper from '../../components/Dashboard/DashboardWrapper';
 
+import DashboardWrapper from "../../components/Dashboard/DashboardWrapper";
 
-export default function RootLayout({
-  children,
-}) {
+export const metadata = {
+  title: 'Dashboard | SawaFlix',
+  description: 'SawaFlix entertainment dashboard',
+};
+
+export default function DashboardLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {/* navbar */}
-        {/* leftbar */}
-        {children}
-        {/* rightbar */}
-        {/*footer */}
-        </body>
-    </html>
-  )
+    <DashboardWrapper>
+      {children}
+    </DashboardWrapper>
+  );
 }
