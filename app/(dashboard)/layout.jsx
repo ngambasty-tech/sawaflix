@@ -1,0 +1,16 @@
+// import DashboardWrapper from '../../components/Dashboard/DashboardWrapper';
+
+import DashboardWrapper from "../../components/Dashboard/DashboardWrapper";
+
+export const metadata = {
+  title: 'Dashboard | SawaFlix',
+  description: 'SawaFlix entertainment dashboard',
+};
+
+export default function DashboardLayout({ children }) {
+  return (
+    <DashboardWrapper>
+      {children}
+    </DashboardWrapper>
+  );
+}
