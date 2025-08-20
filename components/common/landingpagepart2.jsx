@@ -91,6 +91,7 @@ function MovieCarousel() {
 
   const displayedSlideData = getDisplayedSlides();
 
+export default function landingPage() {
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center">
       {/* Control Icons - Top */}
@@ -193,6 +194,7 @@ function MovieCarousel() {
       </div>
     </div>
   );
+}
 }
 
 export default MovieCarousel;
