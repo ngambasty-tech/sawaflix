@@ -1,9 +1,10 @@
 import React from 'react'
+import Navbar from '../../../components/Dashboard/navbar'
 
 const page = () => {
   return (
     <div>
-      Sawa home dashboard
+      <Navbar/>
     </div>
   )
 }
