@@ -1,8 +1,8 @@
 'use client';
 import React, { useState, useCallback } from 'react';
 import Header from './Header';
-import RightSidebar from './RightSidebar';
-import LeftSidebar from './LeftSidebar';
+import RightSidebar from './rightsidebar';
+import LeftSidebar from './leftsidebar';
 // import LeftSidebar from './LeftSidebar';
 // import RightSidebar from './RightSidebar';
 
