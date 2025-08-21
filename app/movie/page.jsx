@@ -6,7 +6,7 @@ import HeroSection from '../../components/HeroSection';
 import ScrollableRow from '../../components/ScrollableRow';
 import Modal from '../../components/Modal';
 import Toast from '../../components/Toast';
-// import Footer from '../../components/Footer';
+import Footer from '../../components/Footer';
 import mockData from '../data/mockdata.json';
 
 export default function MovieStreamingSite() {
@@ -181,9 +181,10 @@ export default function MovieStreamingSite() {
             onAddToWatchlist={handleAddToWatchlist}
           />
         </div>
+        <Footer/>
       </main>
       
-      {/* <Footer onGetStarted={handleGetStarted} /> */}
+      
       
       <Modal 
         isOpen={modalState.isOpen}
