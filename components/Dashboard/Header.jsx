@@ -63,7 +63,7 @@ const Header = ({ sidebarOpen, toggleSidebar }) => {
         {/* Right section */}
         <div className="flex items-center space-x-2">
           {/* Mobile search button */}
-          <button className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring">
+          <button className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring cursor-pointer">
             <Search size={18} />
           </button>
 
@@ -76,7 +76,7 @@ const Header = ({ sidebarOpen, toggleSidebar }) => {
           </button>
 
           {/* Settings */}
-          <button className="hidden sm:block p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring">
+          <button className="hidden sm:block p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring cursor-pointer">
             <Settings size={18} />
           </button>
 
@@ -84,7 +84,7 @@ const Header = ({ sidebarOpen, toggleSidebar }) => {
           <div className="relative">
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center space-x-2 p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring"
+              className="flex items-center space-x-2 p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring cursor-pointer"
             >
               <div className="w-7 h-7 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center">
                 <User size={14} className="text-white" />
@@ -103,12 +103,7 @@ const Header = ({ sidebarOpen, toggleSidebar }) => {
                 <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
                   Profile Settings
                 </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
-                  Preferences
-                </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
-                  Billing
-                </a>
+                
                 <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
                   Help & Support
                 </a>
