@@ -14,7 +14,6 @@ export default function DashboardLayout({ children }) {
     <DashboardWrapper>
       {children}
     </DashboardWrapper>
-    <footer />
     </>
   );
 }
