@@ -1,6 +1,7 @@
 // import DashboardWrapper from '../../components/Dashboard/DashboardWrapper';
 
 import DashboardWrapper from "../../components/Dashboard/DashboardWrapper";
+import footer from '../../components/Footer';
 
 export const metadata = {
   title: 'Dashboard | SawaFlix',
@@ -9,8 +10,11 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
   return (
+    <>
     <DashboardWrapper>
       {children}
     </DashboardWrapper>
+    <footer />
+    </>
   );
 }
