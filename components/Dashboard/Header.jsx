@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Search, Bell, User, Settings, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Header = ({ sidebarOpen, toggleSidebar }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -68,12 +69,14 @@ const Header = ({ sidebarOpen, toggleSidebar }) => {
           </button>
 
           {/* Notifications */}
-          <button className="relative p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring">
-            <Bell size={18} />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center animate-pulse">
-              3
-            </span>
-          </button>
+          <Link href="/dashboard/notification" passHref>
+            <button className="relative p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring cursor-pointer">
+              <Bell size={18} />
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center animate-pulse">
+                3
+              </span>
+            </button>
+          </Link>
 
           {/* Settings */}
           <button className="hidden sm:block p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus-ring cursor-pointer">
@@ -129,4 +132,3 @@ const Header = ({ sidebarOpen, toggleSidebar }) => {
 };
 
 export default Header;
-
