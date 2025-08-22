@@ -1,11 +1,15 @@
-import type { NextConfig } from "next";
-import mockdata from './app/data/mockdata.json';
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  experimental:{
-    // esmExternals:'loose',
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'xjxbjnjspmmpfngbdihd.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
   },
-};
+}
 
-export default nextConfig;
+module.exports = nextConfig
