@@ -1,4 +1,6 @@
 // import SawaFlix from '../home/page';
+import React from 'react'
+import Navbar from '../../../components/Dashboard/navbar'
 
 import SawaFlix from "../../../components/Dashboard/SawaFlix";
 

@@ -90,13 +90,13 @@ const RightSidebar = () => {
       <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4">
         <h3 className="text-md font-semibold mb-3 text-gray-200">Quick Actions</h3>
         <div className="space-y-2">
-          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer">
             🎵 Create Playlist
           </button>
-          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer">
             📥 Import Music
           </button>
-          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer">
             🔄 Shuffle All
           </button>
         </div>
