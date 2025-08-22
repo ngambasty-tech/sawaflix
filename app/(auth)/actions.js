@@ -19,7 +19,7 @@ export async function signInWithPassword(formData) {
     return { error: error.message };
   }
 
-  redirect('/home');
+  redirect('/dashboard');
 }
 
 export async function signUpWithPassword(formData) {
