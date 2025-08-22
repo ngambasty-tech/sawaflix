@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -194,6 +193,4 @@ const MusicProfilePage = () => {
 };
 
 export default MusicProfilePage;
-=======
 import''
->>>>>>> 4aceadc062a04ce1ad12cdec115798e1479006c5
