@@ -63,21 +63,17 @@ const MusicProfilePage = () => {
                 height={160} 
                 className="object-cover w-full h-full"
               />
-              
             </div>
           </div>
         </div>
    
-      <h2 className="text-3xl md:text-4xl font-bold mb-2">John Bless</h2>
-              <p className="text-purple-50 max-w-2xl">
+             <h2 className="text-3xl md:text-xl font-bold mb-2 pl-15">Nana Favour</h2>
+              <p className="text-purple-50 max-w-2xl pl-15 ">
                 Passionate about discovering new music and sharing great vibes.
                 Love everything from indie rock to electronic beats.
               </p>
-
-
-
         {/* Playlists Section */}
-        <div className="bg-gray-700 bg-opacity-10 rounded-lg shadow-sm p-6 mb-8">
+        <div className="bg-gray-800 bg-opacity-10 rounded-lg shadow-sm p-6 mb-8 translate-y-12">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-semibold text-red-500">Playlists</h3>
             <button className="text-purple-600 hover:text-purple-700 font-medium">View all</button>
@@ -106,7 +102,7 @@ const MusicProfilePage = () => {
         </div>
 
         {/* Recommended Songs Section */}
-        <div className="bg-gray-700 bg-opacity-10 rounded-lg shadow-sm p-6 mb-8">
+        <div className="bg-gray-800 bg-opacity-10 rounded-lg shadow-sm p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-semibold text-red-500">Recommended Songs</h3>
             <button className="text-purple-600 hover:text-purple-700 font-medium">View all</button>
@@ -149,7 +145,7 @@ const MusicProfilePage = () => {
         </div>
 
         {/* Favorite Songs Section */}
-        <div className="bg-gray-700 bg-opacity-10 rounded-lg shadow-sm p-6">
+        <div className="bg-gray-800 bg-opacity-10 rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-semibold text-red-500">Favorite</h3>
             <button className="text-purple-600 hover:text-purple-700 font-medium">View all</button>
