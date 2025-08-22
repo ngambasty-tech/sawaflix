@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { cookies } from 'next/headers';
 
 // The createClient function for server components
-import { createClient } from '@/utils/supabase/server'; 
+import { createClient } from '../../../../utils/supabase/server'; 
 
-import { MusicFeatures } from '@/components/MusicFeatures';
+import { MusicFeatures } from '../../../../components/MusicFeatures';
 
 // Define a type for the user profile data
 type UserProfileData = {

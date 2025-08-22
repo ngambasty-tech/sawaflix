@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Bell, User, Settings, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { createClient } from '@/utils/supabase/client'; // Client-side Supabase client
+import { createClient } from '../../utils/supabase/client'; // Client-side Supabase client
 import { User as SupabaseUser } from '@supabase/supabase-js'; // Alias User type to avoid conflict
 import { handleSignOut } from '../../app/(auth)/actions'; // Import the server action
 

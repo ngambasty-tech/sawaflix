@@ -1,9 +1,9 @@
 'use client'
 
 import React, { ChangeEvent, useRef, useState, useTransition, useEffect } from 'react';
-import { uploadImage } from '@/utils/supabase/storage/client';
+import { uploadImage } from '../../utils/supabase/storage/client';
 import Image from 'next/image';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '../../utils/supabase/client';
 import { User } from '@supabase/supabase-js';
 
 type Profile = {
