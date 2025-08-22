@@ -112,12 +112,14 @@ const Header = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean; toggleSi
           </button>
 
           {/* Notifications */}
-          <button className="relative p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+          <Link href="/dashboard/notification">
+          <button className="relative p-2 rounded-lg cursor-pointer text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900">
             <Bell size={18} />
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center animate-pulse">
               3
             </span>
           </button>
+          </Link>
 
           {/* Settings */}
           <button className="hidden sm:block p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 cursor-pointer">

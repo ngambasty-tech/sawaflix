@@ -1,6 +1,6 @@
 'use server';
 
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '../../utils/supabase/server';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'; // Import the standard Supabase client
 import { redirect } from 'next/navigation';
 
