@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Bell, User, Settings, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { createClient } from '@/utils/supabase/client'; // Client-side Supabase client
+import { createClient } from '../../utils/supabase/client'; // Client-side Supabase client
 import { User as SupabaseUser } from '@supabase/supabase-js'; // Alias User type to avoid conflict
 import { handleSignOut } from '../../app/(auth)/actions'; // Import the server action
 
@@ -112,12 +112,14 @@ const Header = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean; toggleSi
           </button>
 
           {/* Notifications */}
-          <button className="relative p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+          <Link href="/dashboard/notification">
+          <button className="relative p-2 rounded-lg cursor-pointer text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900">
             <Bell size={18} />
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center animate-pulse">
               3
             </span>
           </button>
+          </Link>
 
           {/* Settings */}
           <button className="hidden sm:block p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 cursor-pointer">
