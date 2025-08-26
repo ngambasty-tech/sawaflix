@@ -141,6 +141,7 @@ const ArtistUploadPage = () => {
 
                   </div>
                   <div>
+                    
                     <button
                 type="button"
                 onClick={() =>
@@ -152,7 +153,7 @@ const ArtistUploadPage = () => {
                     : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600'
                 }`}
               >
-                Music Formats
+                Movies Formats
                 <p>MP3, WAV, FLAC, AAC</p>
               </button>
                   </div>

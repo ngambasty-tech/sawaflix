@@ -330,6 +330,7 @@ export default function MusicPage() {
             </div>
           </div>
           
+          
           <div className="mb-8">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-2xl font-bold">Trending Now</h3>
