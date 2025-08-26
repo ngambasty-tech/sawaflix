@@ -10,6 +10,7 @@ import {
   Download,
   Clock,
   TrendingUp,
+  FileText,
 } from 'lucide-react';
 
 export default function LeftSidebar() { // Removed onNavigate prop since Link handles navigation
@@ -21,7 +22,7 @@ export default function LeftSidebar() { // Removed onNavigate prop since Link ha
     { name: 'Artists', icon: User, id: 'artists', route: '/dashboard/artistPage', badge: null },
     { name: 'Downloads', icon: Download, id: 'downloads', route: '/dashboard/downloads', badge: null },
     { name: 'SawaSmart', icon: Sparkles, id: 'sawasmart', route: '/dashboard/sawaSmart', badge: 'AI' },
-    { name: 'Support', icon: LifeBuoy, id: 'support', route: '/dashboard/support', badge: null },
+    { name: 'Blogs', icon: FileText, id: 'blogs', route: '/dashboard/blogs', badge: null },
   ];
 
   // The handleItemClick function is now simplified, as Link handles the navigation
