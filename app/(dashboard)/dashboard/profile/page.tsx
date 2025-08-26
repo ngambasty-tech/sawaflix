@@ -24,7 +24,7 @@ const MusicProfilePage = async () => {
 
   const cookieStore = cookies()
   // Await the createClient() call
-  const supabase = await createClient(cookieStore);
+  const supabase = await createClient();
 
   const { data: { user } } = await supabase.auth.getUser();
 

@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import Header from './Header';
 import LeftSidebar from './leftsidebar';
-import RightSidebar from './RightSidebar';
+import RightSidebar from './rightsidebar';
 
 const DashboardWrapper = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
