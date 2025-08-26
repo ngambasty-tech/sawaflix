@@ -15,6 +15,10 @@ type UserProfileData = {
   profile_image_url: string | null; // Changed from avatar_url
 };
 
+// const handleUserSignOut = async () => {
+//   const {error} = await createClient.auth.
+// }
+
 const Header = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean; toggleSidebar: () => void }) => {
   const [searchValue, setSearchValue] = useState('');
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -133,9 +137,9 @@ const Header = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean; toggleSi
               className="flex items-center space-x-2 p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 cursor-pointer"
               aria-label="User profile menu"
             >
-              {userProfile?.profile_image_url ? ( // Changed from avatar_url
+              {userProfile?.profile_image_url ? ( 
                 <Image
-                  src={userProfile.profile_image_url} // Changed from avatar_url
+                  src={userProfile.profile_image_url} 
                   alt="User Avatar"
                   width={28}
                   height={28}

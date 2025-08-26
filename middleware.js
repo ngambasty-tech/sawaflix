@@ -30,7 +30,7 @@ export async function middleware(request) {
   }
   
   if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/sign-up')) {
-    return NextResponse.redirect(new URL('/home', request.url));
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   return NextResponse.next();

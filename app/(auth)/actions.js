@@ -84,8 +84,27 @@ export async function resetPassword(formData) {
 }
 
 export async function handleSignOut() {
-    'use server';
+  'use server';
+  
+  try {
     const supabase = await createClient();
-    await supabase.auth.signOut();
+    
+    // Check if auth is available
+    if (!supabase.auth) {
+      console.error('Supabase auth module not available');
+      return redirect('/login?error=auth_not_available');
+    }
+    
+    const { error } = await supabase.auth.signOut();
+    
+    if (error) {
+      console.error('Sign out error:', error.message);
+      return redirect('/login?error=signout_failed');
+    }
+    
     return redirect('/login');
+  } catch (error) {
+    console.error('Unexpected error in handleSignOut:', error.message);
+    return redirect('/login?error=unexpected_error');
+  }
 }
