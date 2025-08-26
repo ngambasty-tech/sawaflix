@@ -33,7 +33,7 @@ const LandingPage = () => {
       {/* Left Side - Only for Desktop */}
       <div className="hidden lg:flex w-1/2 h-screen relative">
         <Image
-          src="/cameroon.jpg"
+          src="/cam1.jpg"
           alt="Cameroon Entertainment - Music and Movies"
           fill
           className="object-cover"

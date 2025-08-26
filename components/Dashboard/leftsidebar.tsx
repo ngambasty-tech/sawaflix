@@ -8,6 +8,9 @@ import {
   LifeBuoy,
   Sparkles,
   Download,
+  Clock,
+  TrendingUp,
+  FileText,
 } from 'lucide-react';
 import Image from 'next/image';
 import { createClient } from '../../utils/supabase/client';
@@ -56,7 +59,7 @@ export default function LeftSidebar() {
     { name: 'Artists', icon: User, id: 'artists', route: '/dashboard/artistPage', badge: null },
     { name: 'Downloads', icon: Download, id: 'downloads', route: '/dashboard/downloads', badge: null },
     { name: 'SawaSmart', icon: Sparkles, id: 'sawasmart', route: '/dashboard/sawaSmart', badge: 'AI' },
-    { name: 'Support', icon: LifeBuoy, id: 'support', route: '/dashboard/support', badge: null },
+    { name: 'Blogs', icon: FileText, id: 'blogs', route: '/dashboard/blogs', badge: null },
   ];
 
   const handleItemClick = (itemId: string) => {
