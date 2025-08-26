@@ -328,19 +328,11 @@ export default function MusicPage() {
             </div>
           </div>
           
-<<<<<<< HEAD
           {/* Trending Now section */}
           <div className="mb-4 sm:mb-8">
             <div className="flex justify-between items-center mb-3 xs:mb-4">
               <h3 className="text-lg xs:text-xl sm:text-2xl font-bold">Trending Now</h3>
               <button className="text-orange-500 hover:text-orange-400 transition-colors text-xs xs:text-sm sm:text-base">See All →</button>
-=======
-          
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold">Trending Now</h3>
-              <button className="text-orange-500 hover:text-orange-400 transition-colors">See All →</button>
->>>>>>> ed5be7eaa3f1ff9a67960f9b03e15bebf8f732ed
             </div>
             <div className="space-y-2 xs:space-y-3 sm:space-y-4">
               {popularAlbums.map((album, index) => (
