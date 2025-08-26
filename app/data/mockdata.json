@@ -28,7 +28,7 @@
   },
   {
     "title": "The Matrix",
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=750&fit=crop",
+    "image": "/0.jpg",
     "rating": "8.7",
     "release_date": "1999",
     "duration_minutes": 136,
@@ -37,7 +37,7 @@
   },
   {
     "title": "Pulp Fiction",
-    "image": "https://images.unsplash.com/photo-1489599735734-79b463db5d87?w=500&h=750&fit=crop",
+    "image": "/2.jpg",
     "rating": "8.9",
     "release_date": "1994",
     "duration_minutes": 154,
@@ -55,7 +55,7 @@
   },
   {
     "title": "The Godfather",
-    "image": "https://images.unsplash.com/photo-1489599735734-79b463db5d87?w=500&h=750&fit=crop",
+    "image": "/6.jpg",
     "rating": "9.2",
     "release_date": "1972",
     "duration_minutes": 175,
@@ -64,7 +64,7 @@
   },
   {
     "title": "Fight Club",
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=750&fit=crop",
+    "image": "/5.jpg",
     "rating": "8.8",
     "release_date": "1999",
     "duration_minutes": 139,
@@ -82,7 +82,7 @@
   },
   {
     "title": "Goodfellas",
-    "image": "https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=500&h=750&fit=crop",
+    "image": "/3.jpg",
     "rating": "8.7",
     "release_date": "1990",
     "duration_minutes": 146,
@@ -91,7 +91,7 @@
   },
   {
     "title": "The Lord of the Rings",
-    "image": "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=500&h=750&fit=crop",
+    "image": "/5.jpg",
     "rating": "8.9",
     "release_date": "2001",
     "duration_minutes": 178,
@@ -109,7 +109,7 @@
   },
   {
     "title": "The Silence of the Lambs",
-    "image": "https://images.unsplash.com/photo-1489599735734-79b463db5d87?w=500&h=750&fit=crop",
+    "image": "/10.jpg",
     "rating": "8.6",
     "release_date": "1991",
     "duration_minutes": 118,
@@ -118,7 +118,7 @@
   },
   {
     "title": "Saving Private Ryan",
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=750&fit=crop",
+    "image": "/3.jpg",
     "rating": "8.6",
     "release_date": "1998",
     "duration_minutes": 169,
@@ -163,7 +163,7 @@
   },
   {
     "title": "Avatar",
-    "image": "https://images.unsplash.com/photo-1489599735734-79b463db5d87?w=500&h=750&fit=crop",
+    "image": "/0.jpg",
     "rating": "7.9",
     "release_date": "2009",
     "duration_minutes": 162,
@@ -172,7 +172,7 @@
   },
   {
     "title": "The Avengers",
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=750&fit=crop",
+    "image": "/1.jpg",
     "rating": "8.0",
     "release_date": "2012",
     "duration_minutes": 143,
@@ -217,7 +217,7 @@
   },
   {
     "title": "Captain America",
-    "image": "https://images.unsplash.com/photo-1489599735734-79b463db5d87?w=500&h=750&fit=crop",
+    "image": "/0.jpg",
     "rating": "6.9",
     "release_date": "2011",
     "duration_minutes": 124,

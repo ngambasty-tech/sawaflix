@@ -5,7 +5,7 @@ import footer from '../../components/Footer';
 
 export const metadata = {
   title: 'Dashboard | SawaFlix',
-  description: 'SawaFlix entertainment dashboard',
+  description: 'Your entertainment dashboard',
 };
 
 export default function DashboardLayout({ children }) {

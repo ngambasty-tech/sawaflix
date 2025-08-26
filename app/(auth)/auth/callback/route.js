@@ -1,5 +1,4 @@
-import { createClient } from '@/utils/supabase/server';
-import { NextResponse } from 'next/server';
+import { createClient } from '../../../../utils/supabase/server';
 import { redirect } from 'next/navigation';
 
 export async function GET(request) {
@@ -16,6 +15,5 @@ export async function GET(request) {
     }
   }
 
-  // Redirect to the /home page after a successful sign-in
-  return redirect('/home');
+  return redirect('/dashboard');
 }

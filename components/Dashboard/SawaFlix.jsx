@@ -7,26 +7,26 @@ const SawaFlix = () => {
 
   // Sample data
   const trendingContent = [
-    { id: 1, title: "ARCADIAN", type: "movie", rating: 8.5, image: "/api/placeholder/300/400", genre: "Sci-Fi" },
-    { id: 2, title: "Lunar Hits", type: "music", rating: 9.2, image: "/api/placeholder/300/400", genre: "Electronic" },
-    { id: 3, title: "Dune: Part Two", type: "movie", rating: 9.1, image: "/api/placeholder/300/400", genre: "Action" },
-    { id: 4, title: "Midnight Jazz", type: "music", rating: 8.8, image: "/api/placeholder/300/400", genre: "Jazz" },
-    { id: 5, title: "Avatar 3", type: "movie", rating: 9.3, image: "/api/placeholder/300/400", genre: "Adventure" },
-    { id: 6, title: "Summer Beats", type: "music", rating: 8.7, image: "/api/placeholder/300/400", genre: "Pop" }
+    { id: 1, title: "ARCADIAN", type: "movie", rating: 8.5, image: "/0.jpg", genre: "Sci-Fi" },
+    { id: 2, title: "Lunar Hits", type: "music", rating: 9.2, image: "/1.jpg", genre: "Electronic" },
+    { id: 3, title: "Dune: Part Two", type: "movie", rating: 9.1, image: "/10.jpg", genre: "Action" },
+    { id: 4, title: "Midnight Jazz", type: "music", rating: 8.8, image: "/6.jpg", genre: "Jazz" },
+    { id: 5, title: "Avatar 3", type: "movie", rating: 9.3, image: "/3.jpg", genre: "Adventure" },
+    { id: 6, title: "Summer Beats", type: "music", rating: 8.7, image: "/5.jpg", genre: "Pop" }
   ];
 
   const movieRecommendations = [
-    { id: 1, title: "The Ultimatum 4", rating: 4.5, image: "/api/placeholder/200/300", year: "2024" },
-    { id: 2, title: "Black Panther", rating: 4.8, image: "/api/placeholder/200/300", year: "2023" },
-    { id: 3, title: "Action Movie", rating: 4.2, image: "/api/placeholder/200/300", year: "2024" },
-    { id: 4, title: "Thriller Movie", rating: 4.6, image: "/api/placeholder/200/300", year: "2024" }
+    { id: 1, title: "The Ultimatum 4", rating: 4.5, image: "/movie.jpg", year: "2024" },
+    { id: 2, title: "Black Panther", rating: 4.8, image: "/movfy3.jpg", year: "2023" },
+    { id: 3, title: "Action Movie", rating: 4.2, image: "/vid.jpg", year: "2024" },
+    { id: 4, title: "Thriller Movie", rating: 4.6, image: "/wed-image 1.jpg", year: "2024" }
   ];
 
   const musicRecommendations = [
-    { id: 1, title: "Hit Songs 2024", artist: "Various Artists", image: "/api/placeholder/200/200", plays: "1.2M" },
-    { id: 2, title: "Midnight Vibes", artist: "DJ Shadow", image: "/api/placeholder/200/200", plays: "890K" },
-    { id: 3, title: "Pop Classics", artist: "Top Artists", image: "/api/placeholder/200/200", plays: "2.1M" },
-    { id: 4, title: "Rock Anthems", artist: "Rock Legends", image: "/api/placeholder/200/200", plays: "1.5M" }
+    { id: 1, title: "Hit Songs 2024", artist: "Various Artists", image: "/r1.jpg", plays: "1.2M" },
+    { id: 2, title: "Midnight Vibes", artist: "DJ Shadow", image: "/r2.jpg", plays: "890K" },
+    { id: 3, title: "Pop Classics", artist: "Top Artists", image: "/pic1.jpg", plays: "2.1M" },
+    { id: 4, title: "Rock Anthems", artist: "Rock Legends", image: "/r4.jpg", plays: "1.5M" }
   ];
 
   const toggleLogin = () => setIsLoggedIn(!isLoggedIn);
@@ -113,7 +113,7 @@ const SawaFlix = () => {
               Movies For You
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-4 gap-4 sm:gap-6">
             {movieRecommendations.map((movie) => (
               <ContentCard key={movie.id} item={movie} type="movie" />
             ))}
@@ -128,7 +128,7 @@ const SawaFlix = () => {
               Music For You
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-4 gap-6 sm:gap-6">
             {musicRecommendations.map((music) => (
               <ContentCard key={music.id} item={music} type="music" />
             ))}
