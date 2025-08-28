@@ -7,6 +7,7 @@ import {
   User,
   Download,
   FileText,
+  Workflow,
 } from 'lucide-react';
 import Image from 'next/image';
 import { createClient } from '../../utils/supabase/client';
@@ -53,7 +54,7 @@ export default function LeftSidebar() {
     { name: 'Movies', icon: Film, id: 'movies', route: '/dashboard/movie', badge: null },
     { name: 'Music', icon: Music, id: 'music', route: '/dashboard/music', badge: 'New' },
     { name: 'Artists', icon: User, id: 'artists', route: '/dashboard/artistPage', badge: null },
-    // { name: 'Downloads', icon: Download, id: 'downloads', route: '/dashboard/downloads', badge: null },
+    { name: 'SawaSmart', icon: Workflow, id: 'SawaSmart', route: '/dashboard/sawaSmart', badge: null },
     { name: 'Blogs', icon: FileText, id: 'blogs', route: '/dashboard/blogs', badge: null },
   ];
 

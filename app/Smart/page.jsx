@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from "react";
 import { Star, Search } from "lucide-react";
 import Lottie from 'lottie-react'; // Remove curly braces
-import animationData from "../../../../public/animation/Lines.json"
+import animationData from "../../public/animation/Lines.json"
 
 export default function SawaSmart() {
 
@@ -44,7 +44,7 @@ export default function SawaSmart() {
 
       {/* Search / Chat Bar */}
       <div className="max-w-5xl mx-auto w-full px-4">
-        <div className="flex items-center gap-2 bg-zinc-900 rounded-full px-4 py-6 shadow-md mt-13">
+        <div className="flex items-center gap-2 bg-zinc-900 rounded-full px-4 py-6 shadow-md">
           <Search className="w-12 h-7 text-gray-600 text-2xl" />
           <textarea
             rows={1}
