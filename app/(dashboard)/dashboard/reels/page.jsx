@@ -1,10 +1,8 @@
-// /app/reels/page.jsx
 import path from 'path';
 import { promises as fs } from 'fs';
 import VideoPlayer from './VideoPlayer';
 
-// This is a Server Component and can safely use Node.js modules like 'fs'
-// to read from the local file system during the build process or on a server request.
+
 async function getVideos() {
   const videosDir = path.join(process.cwd(), 'public', 'videos');
 
@@ -14,14 +12,13 @@ async function getVideos() {
     return videoFiles.map(file => `/videos/${file}`);
   } catch (error) {
     console.error('Failed to read videos directory:', error);
-    return []; // Return an empty array on error
+    return [];
   }
 }
 
 export default async function ReelsPage() {
   const videoUrls = await getVideos();
 
-  // Your page must return a single element. You can use a fragment or a div.
   return (
     <div>
       <div className="reels-container">
