@@ -31,7 +31,7 @@ export async function middleware(request) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  const protectedRoutes = ['/home', '/dashboard'];
+  const protectedRoutes = ['/','/home', '/dashboard'];
   const isProtectedRoute = protectedRoutes.includes(request.nextUrl.pathname);
 
   if (!user && isProtectedRoute) {
@@ -52,6 +52,7 @@ export const config = {
   matcher: [
     '/home',
     '/login',
+    '/',
     '/sign-up',
     '/dashboard/:path*',
     '/update-password',
