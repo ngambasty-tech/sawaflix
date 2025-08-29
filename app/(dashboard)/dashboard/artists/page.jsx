@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ArtistPage = () => {
   const topArtists = [
@@ -49,7 +50,7 @@ const ArtistPage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] via-transparent to-transparent flex items-end p-6 md:p-10">
           <div className="container mx-auto flex flex-col md:flex-row items-start md:items-center">
             <div className="text-left md:w-1/2 lg:w-2/5">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">Benylee</h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">SawaConnect</h1>
               <p className="text-xl md:text-2xl text-red-500 mb-4">GreenLights</p>
               <button className="px-6 py-3  cursor-pointer bg-red-600 hover:bg-red-700 rounded-full text-lg font-semibold transition duration-300">
                 Follow
@@ -71,6 +72,7 @@ const ArtistPage = () => {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-6">
             {topArtists.map((artist) => (
+              <Link href='/dashboard/artistPage'>
               <div
                 key={artist.id}
                 className="bg-[#2C2C3D] rounded-lg p-4 flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-all duration-300"
@@ -87,6 +89,7 @@ const ArtistPage = () => {
                 <h3 className="text-lg font-semibold truncate w-full mb-1">{artist.name}</h3>
                 <p className="text-sm text-gray-400">{artist.category}</p>
               </div>
+              </Link>
             ))}
           </div>
         </section>
@@ -102,6 +105,7 @@ const ArtistPage = () => {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-6">
             {mostPopularArtists.map((artist) => (
+              <Link href='/dashboard/artistPage'>
               <div
                 key={artist.id}
                 className="bg-[#2C2C3D] rounded-lg p-4 flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-all duration-300"
@@ -118,6 +122,7 @@ const ArtistPage = () => {
                 <h3 className="text-lg font-semibold truncate w-full mb-1">{artist.name}</h3>
                 <p className="text-sm text-gray-400">{artist.category}</p>
               </div>
+              </Link>
             ))}
           </div>
         </section>
