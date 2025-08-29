@@ -17,33 +17,33 @@ export default function SawaSmart() {
   ];
 
   return (
-    <div className="h-screen w-full bg-black text-white flex flex-col">
+    <div className="h-screen w-full bg-black text-white flex flex-col relative">
 
-      <div className="flex justify-center items-center inset-0 z-0 ">
+      {/* Animation Background - Now properly behind everything */}
+      <div className="absolute inset-0 z-0">
         <Lottie
           animationData={animationData}
           loop={true}
           autoplay={true}
           style={{
-            // background:"black",
             position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
             height: "100%",
-            // zIndex: z-20,
+            zIndex: -1, // This ensures it stays behind everything
           }}
         />
       </div>
       
-      {/* Rest of your component remains the same */}
-      <header className="flex-1  text-center">
+      {/* All content now has relative positioning to appear above the animation */}
+      <header className="flex-1 text-center relative z-10">
         <h1 className="text-4xl font-bold p-4 flex bg-neutral-900 bg-opacity-70 border-5px">SawaSmart</h1>
         <h1 className="text-3xl font-meduim mx-5 mt-20">Let's create something mind blowing 🎼💥 </h1>
       </header>
 
       {/* Search / Chat Bar */}
-      <div className="max-w-5xl mx-auto w-full px-4">
+      <div className="max-w-5xl mx-auto w-full px-4 relative z-10">
         <div className="flex items-center gap-2 bg-zinc-900 rounded-full px-4 py-6 shadow-md mt-13">
           <Search className="w-12 h-7 text-gray-600 text-2xl" />
           <textarea
@@ -63,7 +63,7 @@ export default function SawaSmart() {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-6 py-10 flex-1 place-items-center mt-20 mb-20">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-6 py-10 flex-1 place-items-center mt-20 mb-20 relative z-10">
         {cards.map((card) => (
           <div
             key={card.id}
@@ -82,7 +82,7 @@ export default function SawaSmart() {
       </div>
 
       {/* Floating Star Icon */}
-      <button className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center shadow-lg hover:bg-neutral-800 transition">
+      <button className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center shadow-lg hover:bg-neutral-800 transition z-20">
         <Star className="w-6 h-6 text-white" />
       </button>
     </div>

@@ -23,7 +23,7 @@ const LandingPage = () => {
     setTimeout(() => {
       setIsSignupLoading(false);
       // Navigate to sign-in page
-      window.location.href = '/sign-in';
+      window.location.href = '/sign-up';
     }, 2000);
   };
 
@@ -48,7 +48,7 @@ const LandingPage = () => {
         {/* Background Image with Better Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/bg-image.jpg"
+            src="/hero-bg.png"
             alt="Background"
             fill
             className="object-cover"
