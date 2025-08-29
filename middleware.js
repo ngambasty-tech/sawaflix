@@ -2,50 +2,71 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse } from 'next/server';
 
 export async function middleware(request) {
-  // Create an empty response object to clone the request and set cookies
-  const response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  });
-
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name) {
-          return request.cookies.get(name)?.value;
-        },
-        // Correctly set cookies on the response object
-        set(name, value, options) {
-          response.cookies.set({ name, value, ...options });
-        },
-        // Correctly remove cookies by setting an empty value
-        remove(name, options) {
-          response.cookies.set({ name, value: '', ...options });
-        },
+  try {
+    // Create a response object
+    let response = NextResponse.next({
+      request: {
+        headers: new Headers(request.headers),
       },
+    });
+
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      {
+        cookies: {
+          get(name) {
+            return request.cookies.get(name)?.value;
+          },
+          set(name, value, options) {
+            // If the cookie is set, update the response
+            response.cookies.set({
+              name,
+              value,
+              ...options,
+            });
+          },
+          remove(name, options) {
+            // If the cookie is removed, update the response
+            response.cookies.set({
+              name,
+              value: '',
+              ...options,
+            });
+          },
+        },
+      }
+    );
+
+    // Get the user session
+    const { data: { user }, error } = await supabase.auth.getUser();
+    
+    if (error) {
+      console.error('Auth error:', error);
+      // Continue without redirecting on auth errors
     }
-  );
 
-  const { data: { user } } = await supabase.auth.getUser();
+    const protectedRoutes = ['/', '/home', '/dashboard'];
+    const isProtectedRoute = protectedRoutes.includes(request.nextUrl.pathname);
+    const isAuthRoute = ['/login', '/sign-up'].includes(request.nextUrl.pathname);
 
-  const protectedRoutes = ['/','/home', '/dashboard'];
-  const isProtectedRoute = protectedRoutes.includes(request.nextUrl.pathname);
+    // Redirect logic
+    if (!user && isProtectedRoute) {
+      const redirectUrl = new URL('/login', request.url);
+      return NextResponse.redirect(redirectUrl);
+    }
+    
+    if (user && isAuthRoute) {
+      const redirectUrl = new URL('/dashboard', request.url);
+      return NextResponse.redirect(redirectUrl);
+    }
 
-  if (!user && isProtectedRoute) {
-    // Redirect to login and return the response
-    return NextResponse.redirect(new URL('/login', request.url));
+    return response;
+  } catch (error) {
+    console.error('Middleware error:', error);
+    // Return a basic response without authentication on error
+    return NextResponse.next();
   }
-  
-  if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/sign-up')) {
-    // Redirect to dashboard and return the response
-    return NextResponse.redirect(new URL('/dashboard', request.url));
-  }
-
-  // Return the response object, now with any new cookies set
-  return response;
 }
 
 export const config = {
