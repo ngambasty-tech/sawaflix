@@ -2,7 +2,6 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import VideoPlayer from './VideoPlayer';
 
-
 async function getVideos() {
   const videosDir = path.join(process.cwd(), 'public', 'videos');
 

@@ -1,13 +1,13 @@
 'use server';
 
 import { createClient } from '../../utils/supabase/server';
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'; // Import the standard Supabase client
+// import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { redirect } from 'next/navigation';
 
 export async function signInWithPassword(formData) {
   const email = formData.get('email');
   const password = formData.get('password');
-  const supabase = await createClient();
+  const supabase =createClient();
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -25,9 +25,9 @@ export async function signInWithPassword(formData) {
 export async function signUpWithPassword(formData) {
   const email = formData.get('email');
   const password = formData.get('password');
-  const supabase = await createClient();
+  const supabase =createClient();
 
-  const { data, error } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email,
     password,
   });
@@ -41,7 +41,7 @@ export async function signUpWithPassword(formData) {
 }
 
 export async function signInWithGoogle() {
-  const supabase = await createClient();
+  const supabase =createClient();
   const origin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -62,12 +62,11 @@ export async function signInWithGoogle() {
 // New function for password reset
 export async function resetPassword(formData) {
   const email = formData.email;
+  if (!email) {
+    return { error: 'Email is required' };
+  }
   
-  // Use the standard Supabase client for unauthenticated actions
-  const supabase = createSupabaseClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
+  const supabase = createClient();
 
   const origin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -87,9 +86,8 @@ export async function handleSignOut() {
   'use server';
   
   try {
-    const supabase = await createClient();
+    const supabase =createClient();
     
-    // Check if auth is available
     if (!supabase.auth) {
       console.error('Supabase auth module not available');
       return redirect('/login?error=auth_not_available');
