@@ -53,7 +53,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen w-full relative overflow-hidden font-inter">
       <Image
-        src="/background.png"
+        src="/hero-bg.png"
         alt="Background"
         layout="fill"
         objectFit="cover"

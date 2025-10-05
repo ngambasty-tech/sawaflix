@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import React from 'react';
 
 // Data for the sections
@@ -24,6 +25,7 @@ const MusicPage = () => {
 
       {/* Recently Played Section */}
       <div className="mb-12">
+        <Link href='/dashboard/music'>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Recently Played</h2>
           <div className="flex items-center space-x-2 cursor-pointer text-purple-300 hover:text-white transition-colors">
@@ -33,8 +35,10 @@ const MusicPage = () => {
             </svg>
           </div>
         </div>
+        </Link>
         <div className="flex space-x-4 overflow-x-auto py-2 scrollbar-hide">
           {recentlyPlayedData.map((item, index) => (
+        <Link href='/dashboard/music'>
             <div key={index} className="flex-none w-32 text-center cursor-pointer transform hover:scale-105 transition-transform">
               <img
                 src={item.image}
@@ -44,6 +48,7 @@ const MusicPage = () => {
               <p className="text-sm font-medium truncate">{item.artist}</p>
               <p className="text-xs text-gray-400 truncate">{item.album}</p>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -53,6 +58,8 @@ const MusicPage = () => {
         <h2 className="text-xl font-semibold mb- text-red-700">Made For You</h2>
         <div className="space-y-4">
           {madeForYouData.map((song, index) => (
+        <Link href='/dashboard/music'>
+            
             <div key={index} className="flex items-center p-3 rounded-lg hover:bg-red-800 transition-colors cursor-pointer">
               
               <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden mr-4">
@@ -75,6 +82,7 @@ const MusicPage = () => {
                 </svg>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

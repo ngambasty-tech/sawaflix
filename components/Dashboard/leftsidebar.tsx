@@ -52,7 +52,7 @@ export default function LeftSidebar() {
 
   const menuItems = [
     { name: 'Movies', icon: Film, id: 'movies', route: '/dashboard/movie', badge: null },
-    { name: 'Music', icon: Music, id: 'music', route: '/dashboard/music', badge: 'New' },
+    { name: 'Music', icon: Music, id: 'music', route: '/dashboard/musicPage', badge: 'New' },
     { name: 'Artists', icon: User, id: 'artists', route: '/dashboard/artists', badge: null },
     { name: 'Blogs', icon: FileText, id: 'blogs', route: '/dashboard/blogs', badge: null },
   ];
