@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useFormStatus } from 'react-dom';
 import { signInWithPassword, signInWithGoogle, resetPassword } from '../actions';
 
@@ -30,13 +29,16 @@ const SubmitButton = ({ children, isLoading }) => {
 export default function LoginPage() {
   const [error, setError] = useState(null);
   const [resetMessage, setResetMessage] = useState(null);
-  const [email, setEmail] = useState(''); // New state to manage the email input
+  const [email, setEmail] = useState(''); 
+  const [isResetting, setIsResetting] = useState(false);
 
   const handleResetPassword = async (event) => {
     event.preventDefault();
+    setIsResetting(true);
     if (!email) { // Use the email state here
       setError('Please enter your email to reset the password.');
       setResetMessage(null);
+      setIsResetting(false);
       return;
     }
 
@@ -48,15 +50,15 @@ export default function LoginPage() {
       setResetMessage('A password reset link has been sent to your email address.');
       setError(null);
     }
+    setIsResetting(false);
   };
 
   return (
     <div className="min-h-screen w-full relative overflow-hidden font-inter">
       <Image
-        src="/background.png"
+        src="/hero-bg.png"
         alt="Background"
-        layout="fill"
-        objectFit="cover"
+        fill
         quality={100}
         className="z-0"
         onError={(e) => {
@@ -124,9 +126,10 @@ export default function LoginPage() {
                 <button
                   type="button" // Change type to "button" to prevent form submission
                   onClick={handleResetPassword}
+                  disabled={isResetting}
                   className="text-blue-400 hover:text-blue-300 transition-colors duration-200 hover:underline"
                 >
-                  Forgot password?
+                  {isResetting ? 'Sending...' : 'Forgot password?'}
                 </button>
               </div>
               
