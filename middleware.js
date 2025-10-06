@@ -6,7 +6,7 @@ export async function middleware(request) {
     // Create a response object
     let response = NextResponse.next({
       request: {
-        headers: new Headers(request.headers),
+        headers: request.headers,
       },
     });
 
@@ -15,23 +15,18 @@ export async function middleware(request) {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       {
         cookies: {
-          get(name) {
-            return request.cookies.get(name)?.value;
+          getAll() {
+            return request.cookies.getAll();
           },
-          set(name, value, options) {
-            // If the cookie is set, update the response
-            response.cookies.set({
-              name,
-              value,
-              ...options,
+          setAll(cookiesToSet) {
+            // Update request cookies for subsequent middleware
+            cookiesToSet.forEach(({ name, value, options }) => {
+              request.cookies.set(name, value);
             });
-          },
-          remove(name, options) {
-            // If the cookie is removed, update the response
-            response.cookies.set({
-              name,
-              value: '',
-              ...options,
+            
+            // Update response cookies
+            cookiesToSet.forEach(({ name, value, options }) => {
+              response.cookies.set(name, value, options);
             });
           },
         },
@@ -46,18 +41,23 @@ export async function middleware(request) {
       // Continue without redirecting on auth errors
     }
 
+    const { pathname } = request.nextUrl;
+    
+    // Define route patterns
     const protectedRoutes = ['/', '/home', '/dashboard'];
-    const isProtectedRoute = protectedRoutes.includes(request.nextUrl.pathname);
-    const isAuthRoute = ['/login', '/sign-up'].includes(request.nextUrl.pathname);
+    const isProtectedRoute = protectedRoutes.includes(pathname) || pathname.startsWith('/dashboard/');
+    const isAuthRoute = ['/login', '/sign-up', '/sign-in'].includes(pathname);
 
     // Redirect logic
     if (!user && isProtectedRoute) {
       const redirectUrl = new URL('/login', request.url);
+      console.log('Redirecting to login - no user found');
       return NextResponse.redirect(redirectUrl);
     }
     
     if (user && isAuthRoute) {
       const redirectUrl = new URL('/dashboard', request.url);
+      console.log('Redirecting to dashboard - user already authenticated');
       return NextResponse.redirect(redirectUrl);
     }
 
@@ -71,11 +71,13 @@ export async function middleware(request) {
 
 export const config = {
   matcher: [
-    '/home',
-    '/login',
-    '/',
-    '/sign-up',
-    '/dashboard/:path*',
-    '/update-password',
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };
