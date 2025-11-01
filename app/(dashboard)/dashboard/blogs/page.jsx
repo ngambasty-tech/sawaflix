@@ -8,7 +8,7 @@ export default function BlogsPage() {
     {
       id: 1,
       type: "movie",
-      title: "Wednesday",
+      title: "Humans",
       author: "daisy la belle",
       thumbnail: "/movie.jpg",
       profilePic: "/wed-image 1.jpg",

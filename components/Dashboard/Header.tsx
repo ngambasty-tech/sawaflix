@@ -75,9 +75,11 @@ const Header = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean; toggleSi
 
           {/* Logo */}
           <div className="flex items-center space-x-3">
+            <Link href="/dashboard">
             <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">SF</span>
             </div>
+            </Link>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
                 SawaFlix

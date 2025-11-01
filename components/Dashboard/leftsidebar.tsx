@@ -52,11 +52,14 @@ export default function LeftSidebar() {
 
   const menuItems = [
     { name: 'Movies', icon: Film, id: 'movies', route: '/dashboard/movie', badge: null },
-    { name: 'Music', icon: Music, id: 'music', route: '/dashboard/music', badge: 'New' },
-    { name: 'Artists', icon: User, id: 'artists', route: '/dashboard/artistPage', badge: null },
-    { name: 'SawaSmart', icon: Workflow, id: 'SawaSmart', route: '/dashboard/sawaSmart', badge: null },
+    { name: 'Music', icon: Music, id: 'music', route: '/dashboard/musicPage', badge: 'New' },
+    { name: 'Artists', icon: User, id: 'artists', route: '/dashboard/artists', badge: null },
     { name: 'Blogs', icon: FileText, id: 'blogs', route: '/dashboard/blogs', badge: null },
   ];
+
+  const smart =[
+    { name: 'SawaSmart', icon: Workflow, id: 'SawaSmart', route: '/dashboard/sawaSmart', badge: null },
+  ]
 
   const handleItemClick = (itemId: string) => {
     setActive(itemId);
@@ -103,8 +106,43 @@ export default function LeftSidebar() {
       </nav>
 
       <div className="p-4 border-t border-gray-800">
+      {smart.map((item) => {
+          const Icon = item.icon;
+          const isActive = active === item.id;
+          
+          return (
+            <Link
+              key={item.id}
+              href={item.route}
+              onClick={() => handleItemClick(item.id)}
+              className={`flex items-center justify-between w-full p-3 rounded-xl transition-all duration-200 group ${
+                isActive
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/20'
+                  : 'hover:bg-gray-800 text-gray-300 hover:text-white'
+              }`}
+            >
+              <div className="flex items-center space-x-3">
+                <Icon 
+                  size={20} 
+                  className={`transition-colors ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}`} 
+                />
+                <span className="font-medium">{item.name}</span>
+              </div>
+              
+              {item.badge && (
+                <span className={`px-2 py-1 text-xs rounded-full font-medium ${
+                  isActive 
+                    ? 'bg-white/20 text-white' 
+                    : 'bg-red-500/20 text-red-400'
+                }`}>
+                  {item.badge}
+                </span>
+              )}
+            </Link>
+          );
+        })}
         <Link href="/dashboard/profile">
-          <div className="flex items-center space-x-3 p-3 rounded-xl bg-gradient-to-r from-gray-800 to-gray-750 hover:from-gray-750 hover:to-gray-700 transition-all cursor-pointer">
+          <div className="flex items-center space-x-3 p-3 rounded-xl bg-gradient-to-r from-gray-800 mt-5 to-gray-750 hover:from-gray-750 hover:to-gray-700 transition-all cursor-pointer">
             {userProfile?.profile_image_url ? (
               <div className="w-10 h-10 rounded-full flex-shrink-0 relative overflow-hidden">
                 <Image
