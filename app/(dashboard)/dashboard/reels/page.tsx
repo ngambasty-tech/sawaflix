@@ -6,37 +6,13 @@ export default async function ReelsPage() {
   const supabase = await createClient();
   
   try {
-    // First, let's check what columns exist in the movies table
-    const { data: sampleVideo, error: sampleError } = await supabase
-      .from('movies')
-      .select('*')
-      .limit(1)
-      .single();
-
-    if (sampleError) {
-      throw new Error(`Error accessing movies table: ${sampleError.message}`);
-    }
-
-    console.log('Available columns:', Object.keys(sampleVideo || {}));
-
-    // Determine the correct timestamp column to use for ordering
-    const timestampColumns = ['created_at', 'created', 'uploaded_at', 'timestamp', 'date_created'];
-    let orderColumn = 'id'; // fallback to ID if no timestamp column exists
-    
-    for (const col of timestampColumns) {
-      if (sampleVideo && col in sampleVideo) {
-        orderColumn = col;
-        break;
-      }
-    }
-
-    console.log('Using order column:', orderColumn);
-
-    // Fetch videos without the problematic join and with correct ordering
+    // Fetch videos with only necessary columns and proper ordering
+    // Added 'created_at' to the select - make sure this column exists in your movies table
     const { data: videos, error } = await supabase
       .from('movies')
-      .select('*')
-      .order(orderColumn, { ascending: false });
+      .select('id,title,description,release_date,producer_id,producer_name,is_featured,featured_actors,video_url,file_path,file_size,mime_type,uploaded_by,created_at')
+      .order('created_at', { ascending: false })
+      .limit(50); // Add limit for better performance
 
     if (error) {
       throw new Error(`Error loading videos: ${error.message}`);
