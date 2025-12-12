@@ -186,21 +186,27 @@ export async function signInWithGoogle() {
 
     if (error) {
       console.error('🔴 Google OAuth error:', error.message);
-      return redirect(`/login?error=${encodeURIComponent(error.message || 'oauth_failed')}`);
+      throw new Error(`Google OAuth failed: ${error.message}`);
     }
 
-    // If Supabase returned a redirect URL, redirect the browser there.
+    // If Supabase returned a redirect URL, redirect the browser there
     if (data?.url) {
       console.log('🟢 Google OAuth URL generated, redirecting...');
-      return redirect(data.url);
+      redirect(data.url);
     }
 
-    // Fallback
-    console.error('🔴 No URL returned from Google OAuth');
-    return redirect('/login?error=oauth_no_url');
+    // If no URL, that's an error
+    throw new Error('Google OAuth service did not return a valid URL');
   } catch (error) {
-    console.error('🔴 Unexpected Google OAuth error:', error);
-    return redirect(`/login?error=${encodeURIComponent('oauth_failed')}`);
+    console.error('🔴 Google OAuth error:', error.message);
+    
+    // Let NEXT_REDIRECT errors propagate (from redirect() calls)
+    if (error?.digest?.startsWith('NEXT_REDIRECT')) {
+      throw error;
+    }
+    
+    // For other errors, redirect to login with error message
+    redirect(`/login?error=${encodeURIComponent(error.message || 'oauth_failed')}`);
   }
 }
 

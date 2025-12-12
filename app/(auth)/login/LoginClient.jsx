@@ -192,30 +192,24 @@ export default function LoginPage() {
     setSuccessMessage(null);
     setResetMessage(null);
     setIsGoogleLoading(true);
-    setIsRedirecting(true);
     
     try {
       console.log('🟡 Initiating Google sign-in...');
-      const result = await signInWithGoogle();
-      
-      // If we get here, redirect() didn't throw, but we should still handle it
-      if (result?.error) {
-        setError(result.error);
-        setIsGoogleLoading(false);
-        setIsRedirecting(false);
-      }
+      // Call the server action - it will redirect automatically
+      await signInWithGoogle();
+      // If we reach here, something went wrong
+      setError('Google sign in initiation failed. Please try again.');
+      setIsGoogleLoading(false);
     } catch (err) {
-      console.error('Google sign in error:', err);
-      
-      // NEXT_REDIRECT is expected behavior
+      // NEXT_REDIRECT is expected and means redirect is happening
       if (err?.digest?.startsWith('NEXT_REDIRECT')) {
-        console.log('🟢 Redirect initiated by signInWithGoogle');
-        return;
+        console.log('🟢 Google OAuth redirect in progress');
+        return; // Let the redirect happen
       }
       
+      console.error('Google sign in error:', err);
       setError('Google sign in failed. Please try again.');
       setIsGoogleLoading(false);
-      setIsRedirecting(false);
     }
   };
 
