@@ -1,35 +1,134 @@
-import { createClient } from '../../../../utils/supabase/server';
-import { NextResponse } from 'next/server';
-
-// Force Node.js Runtime
-export const runtime = 'nodejs';
+// app/auth/callback/route.js - SIMPLIFIED VERSION
+import { createClient } from '../../../../utils/supabase/server'
+import { NextResponse } from 'next/server'
 
 export async function GET(request) {
-  console.log('Auth callback started with Node.js runtime');
-  
   try {
-    const { searchParams } = new URL(request.url);
-    const code = searchParams.get('code');
+    const requestUrl = new URL(request.url)
+    const code = requestUrl.searchParams.get('code')
+    const type = requestUrl.searchParams.get('type')
     
+    console.log('🔵 CALLBACK RECEIVED:', {
+      code: code ? `YES (${code.substring(0, 8)}...)` : 'NO',
+      type: type || 'none',
+      fullUrl: requestUrl.toString()
+    })
+
+    // STEP 1: If there's NO code at all, it's invalid
     if (!code) {
-      console.error('No code parameter found');
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/login?error=no_code`);
+      console.log('🔴 No code parameter - invalid callback')
+      return NextResponse.redirect(new URL('/login?error=invalid_reset_link', request.url))
     }
 
-    const supabase = createClient();
-    
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
-    
-    if (error) {
-      console.error('Auth exchange error:', error.message);
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/login?error=auth_failed`);
+    // STEP 2: ALWAYS treat password reset links specially
+    // Check ALL possible indicators of password reset
+    const isPasswordReset = 
+      type === 'recovery' ||
+      requestUrl.searchParams.has('token_hash') ||
+      requestUrl.searchParams.has('recovery') ||
+      code.includes('reset') || // Some codes contain "reset"
+      code.includes('recovery') || // Some codes contain "recovery"
+      requestUrl.searchParams.toString().includes('recovery') ||
+      requestUrl.searchParams.toString().includes('reset')
+
+    if (isPasswordReset) {
+      console.log('🟡 PASSWORD RESET DETECTED - Redirecting to /update-password')
+      
+      const redirectUrl = new URL('/update-password', request.url)
+      
+      // Copy EVERYTHING from the original URL
+      requestUrl.searchParams.forEach((value, key) => {
+        redirectUrl.searchParams.set(key, value)
+      })
+      
+      console.log('🟡 Redirect URL:', redirectUrl.toString())
+      return NextResponse.redirect(redirectUrl)
     }
 
-    console.log('Auth successful, redirecting to dashboard');
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`);
+    // STEP 3: If we're not sure, still send to update-password for safety
+    // Most codes without type are password resets
+    if (code && !type) {
+      console.log('🟡 CODE WITHOUT TYPE - Assuming password reset')
+      
+      const redirectUrl = new URL('/update-password', request.url)
+      redirectUrl.searchParams.set('code', code)
+      
+      console.log('🟡 Redirect URL:', redirectUrl.toString())
+      return NextResponse.redirect(redirectUrl)
+    }
+
+    // STEP 4: Regular OAuth/sign-in flows (has type but not recovery)
+    if (code && type && type !== 'recovery') {
+      console.log('🟢 REGULAR AUTH FLOW - Exchanging code')
+      const supabase = await createClient()
+      
+      try {
+        const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code)
+        
+        if (exchangeError) {
+          console.error('🔴 Exchange failed:', exchangeError.message)
+          
+          // If exchange fails, it might be an expired password reset
+          // Redirect to update-password with error
+          const redirectUrl = new URL('/update-password', request.url)
+          redirectUrl.searchParams.set('code', code)
+          redirectUrl.searchParams.set('error', 'expired_link')
+          return NextResponse.redirect(redirectUrl)
+        }
+        
+        // After successful auth, ensure user exists in public.users table
+        try {
+          const { data: { user } } = await supabase.auth.getUser()
+          
+          if (user) {
+            console.log('🟡 Syncing user to public.users table:', user.email)
+            
+            // Insert or update user in public.users
+            const { error: syncError } = await supabase
+              .from('users')
+              .upsert({
+                id: user.id,
+                email: user.email,
+                full_name: user.user_metadata?.full_name || user.user_metadata?.username || user.email,
+                role: user.user_metadata?.role || 'client',
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+              }, {
+                onConflict: 'id'
+              })
+            
+            if (syncError) {
+              console.error('🟡 User sync warning (non-fatal):', syncError.message)
+            } else {
+              console.log('✅ User synced to public.users table')
+            }
+          }
+        } catch (syncErr) {
+          console.error('🟡 User sync error (non-fatal):', syncErr.message)
+          // Don't fail the auth flow if sync fails
+        }
+        
+        console.log('🟢 Auth successful, redirecting to /dashboard')
+        return NextResponse.redirect(new URL('/dashboard', request.url))
+        
+      } catch (exchangeErr) {
+        console.error('🔴 Exchange error:', exchangeErr)
+        return NextResponse.redirect(new URL('/login?error=auth_failed', request.url))
+      }
+    }
+
+    // STEP 5: Fallback - send to update-password
+    console.log('🟡 FALLBACK - Sending to update-password')
+    const redirectUrl = new URL('/update-password', request.url)
+    requestUrl.searchParams.forEach((value, key) => {
+      redirectUrl.searchParams.set(key, value)
+    })
+    return NextResponse.redirect(redirectUrl)
     
   } catch (error) {
-    console.error('Unexpected error in auth callback:', error.message);
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/login?error=server_error`);
+    console.error('🔴 CALLBACK ERROR:', error)
+    return NextResponse.redirect(
+      new URL(`/login?error=callback_error&details=${encodeURIComponent(error.message)}`, request.url)
+    )
   }
 }
