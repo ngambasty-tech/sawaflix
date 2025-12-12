@@ -166,32 +166,42 @@ export async function signUpWithPassword(formData) {
 }
 
 export async function signInWithGoogle() {
-  const supabase = await createClient();
-  const origin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  try {
+    const supabase = await createClient();
+    const origin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: `${origin}/auth/callback`,
-      queryParams: {
-        access_type: 'offline',
-        prompt: 'consent',
+    console.log('🟡 Starting Google OAuth flow...');
+    console.log('🟡 Redirect URL:', `${origin}/auth/callback`);
+
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${origin}/auth/callback`,
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        },
       },
-    },
-  });
+    });
 
-  if (error) {
-    console.error('🔴 Google OAuth error:', error.message);
-    return redirect(`/login?error=${encodeURIComponent(error.message || 'oauth_failed')}`);
+    if (error) {
+      console.error('🔴 Google OAuth error:', error.message);
+      return redirect(`/login?error=${encodeURIComponent(error.message || 'oauth_failed')}`);
+    }
+
+    // If Supabase returned a redirect URL, redirect the browser there.
+    if (data?.url) {
+      console.log('🟢 Google OAuth URL generated, redirecting...');
+      return redirect(data.url);
+    }
+
+    // Fallback
+    console.error('🔴 No URL returned from Google OAuth');
+    return redirect('/login?error=oauth_no_url');
+  } catch (error) {
+    console.error('🔴 Unexpected Google OAuth error:', error);
+    return redirect(`/login?error=${encodeURIComponent('oauth_failed')}`);
   }
-
-  // If Supabase returned a redirect URL, redirect the browser there.
-  if (data?.url) {
-    return redirect(data.url);
-  }
-
-  // Fallback
-  return redirect('/login?error=oauth_no_url');
 }
 
 export async function resetPassword(formData) {
