@@ -150,8 +150,10 @@ export default function LeftSidebar({ onNavigate }: { onNavigate?: () => void })
                 <Image
                   src={userProfile.profile_image_url}
                   alt="Profile"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="40px"
+                  className="object-cover"
+                  unoptimized
                 />
               </div>
             ) : (
