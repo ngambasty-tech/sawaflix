@@ -77,7 +77,7 @@ const SawaFlix = () => {
               Watch Now
             </button>  
             </Link> */}
-            <Link href="/dashboard/reels">
+            <Link href="/dashboard/youtubeVids">
             <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-200 cursor-pointer">
               Listen Now
             </button>
