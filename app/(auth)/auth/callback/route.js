@@ -7,7 +7,7 @@ export async function GET(request) {
     const requestUrl = new URL(request.url)
     const code = requestUrl.searchParams.get('code')
     const type = requestUrl.searchParams.get('type')
-    
+
     console.log('🔵 CALLBACK RECEIVED:', {
       code: code ? `YES (${code.substring(0, 8)}...)` : 'NO',
       type: type || 'none',
@@ -22,7 +22,7 @@ export async function GET(request) {
 
     // STEP 2: ALWAYS treat password reset links specially
     // Check ALL possible indicators of password reset
-    const isPasswordReset = 
+    const isPasswordReset =
       type === 'recovery' ||
       requestUrl.searchParams.has('token_hash') ||
       requestUrl.searchParams.has('recovery') ||
@@ -33,14 +33,14 @@ export async function GET(request) {
 
     if (isPasswordReset) {
       console.log('🟡 PASSWORD RESET DETECTED - Redirecting to /update-password')
-      
+
       const redirectUrl = new URL('/update-password', request.url)
-      
+
       // Copy EVERYTHING from the original URL
       requestUrl.searchParams.forEach((value, key) => {
         redirectUrl.searchParams.set(key, value)
       })
-      
+
       console.log('🟡 Redirect URL:', redirectUrl.toString())
       return NextResponse.redirect(redirectUrl)
     }
@@ -49,10 +49,10 @@ export async function GET(request) {
     // Most codes without type are password resets
     if (code && !type) {
       console.log('🟡 CODE WITHOUT TYPE - Assuming password reset')
-      
+
       const redirectUrl = new URL('/update-password', request.url)
       redirectUrl.searchParams.set('code', code)
-      
+
       console.log('🟡 Redirect URL:', redirectUrl.toString())
       return NextResponse.redirect(redirectUrl)
     }
@@ -61,13 +61,13 @@ export async function GET(request) {
     if (code && type && type !== 'recovery') {
       console.log('🟢 REGULAR AUTH FLOW - Exchanging code')
       const supabase = await createClient()
-      
+
       try {
         const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code)
-        
+
         if (exchangeError) {
           console.error('🔴 Exchange failed:', exchangeError.message)
-          
+
           // If exchange fails, it might be an expired password reset
           // Redirect to update-password with error
           const redirectUrl = new URL('/update-password', request.url)
@@ -75,14 +75,14 @@ export async function GET(request) {
           redirectUrl.searchParams.set('error', 'expired_link')
           return NextResponse.redirect(redirectUrl)
         }
-        
+
         // After successful auth, ensure user exists in public.users table
         try {
           const { data: { user } } = await supabase.auth.getUser()
-          
+
           if (user) {
             console.log('🟡 Syncing user to public.users table:', user.email)
-            
+
             // Insert or update user in public.users
             const { error: syncError } = await supabase
               .from('users')
@@ -96,7 +96,7 @@ export async function GET(request) {
               }, {
                 onConflict: 'id'
               })
-            
+
             if (syncError) {
               console.error('🟡 User sync warning (non-fatal):', syncError.message)
             } else {
@@ -107,10 +107,10 @@ export async function GET(request) {
           console.error('🟡 User sync error (non-fatal):', syncErr.message)
           // Don't fail the auth flow if sync fails
         }
-        
+
         console.log('🟢 Auth successful, redirecting to /dashboard')
         return NextResponse.redirect(new URL('/dashboard', request.url))
-        
+
       } catch (exchangeErr) {
         console.error('🔴 Exchange error:', exchangeErr)
         return NextResponse.redirect(new URL('/login?error=auth_failed', request.url))
@@ -124,7 +124,7 @@ export async function GET(request) {
       redirectUrl.searchParams.set(key, value)
     })
     return NextResponse.redirect(redirectUrl)
-    
+
   } catch (error) {
     console.error('🔴 CALLBACK ERROR:', error)
     return NextResponse.redirect(
